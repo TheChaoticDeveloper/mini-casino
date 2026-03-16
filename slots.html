@@ -2,17 +2,23 @@
 <html>
 
 <head>
-<title>Slot Machine</title>
+<title>Slots</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>🎰 Slot Machine 🎰</h1>
+<h1>🎰 Slot Machine</h1>
 
-<h2 id="reels">0 0 0</h2>
+<h2>💰 Money: $<span id="money">1000</span></h2>
+
+<label>Bet:</label>
+<input type="number" id="bet" value="50">
+
+<h1 id="reels">🎲 🎲 🎲</h1>
 
 <button onclick="spin()">SPIN</button>
+<button onclick="resetSlots()">Reset</button>
 
 <h3 id="result"></h3>
 
@@ -25,4 +31,3 @@
 </body>
 
 </html>
-

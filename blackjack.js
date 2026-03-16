@@ -11,6 +11,12 @@ function startGame(){
 player=[drawCard(),drawCard()];
 dealer=[drawCard(),drawCard()];
 
+document.getElementById("startButtons").style.display="none";
+document.getElementById("gameButtons").style.display="block";
+document.getElementById("endButtons").style.display="none";
+
+document.getElementById("result").innerHTML="";
+
 updateDisplay();
 }
 
@@ -19,7 +25,7 @@ function hit(){
 player.push(drawCard());
 
 if(total(player)>21){
-lose();
+lose("Bust! Dealer Wins");
 }
 
 updateDisplay();
@@ -35,13 +41,13 @@ let p=total(player);
 let d=total(dealer);
 
 if(d>21 || p>d){
-win();
+win("You Win!");
 }
 else if(d>p){
-lose();
+lose("Dealer Wins");
 }
 else{
-document.getElementById("result").innerHTML="Draw";
+draw();
 }
 
 updateDisplay();
@@ -58,24 +64,42 @@ sum+=hand[i];
 return sum;
 }
 
-function win(){
+function win(message){
 
 let bet=parseInt(document.getElementById("bet").value);
 
 money+=bet;
 
-document.getElementById("result").innerHTML="You Win!";
-updateMoney();
+document.getElementById("result").innerHTML=message;
+
+endRound();
 }
 
-function lose(){
+function lose(message){
 
 let bet=parseInt(document.getElementById("bet").value);
 
 money-=bet;
 
-document.getElementById("result").innerHTML="You Lose!";
+document.getElementById("result").innerHTML=message;
+
+endRound();
+}
+
+function draw(){
+
+document.getElementById("result").innerHTML="Draw";
+
+endRound();
+}
+
+function endRound(){
+
 updateMoney();
+
+document.getElementById("gameButtons").style.display="none";
+document.getElementById("endButtons").style.display="block";
+
 }
 
 function updateDisplay(){
@@ -99,7 +123,14 @@ function resetGame(){
 player=[];
 dealer=[];
 
+document.getElementById("player").innerHTML="";
+document.getElementById("dealer").innerHTML="";
+document.getElementById("playerTotal").innerHTML="";
+document.getElementById("dealerTotal").innerHTML="";
 document.getElementById("result").innerHTML="";
-updateDisplay();
+
+document.getElementById("startButtons").style.display="block";
+document.getElementById("gameButtons").style.display="none";
+document.getElementById("endButtons").style.display="none";
 
 }

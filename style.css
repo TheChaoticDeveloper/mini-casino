@@ -1,1 +1,21 @@
+body{
+background:darkgreen;
+color:white;
+text-align:center;
+font-family:Arial;
+}
+
+button{
+padding:15px 30px;
+font-size:20px;
+margin:15px;
+border:none;
+border-radius:10px;
+background:gold;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.1);
+}
 
